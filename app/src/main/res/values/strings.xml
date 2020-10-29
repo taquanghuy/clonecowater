@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">CloneCowater</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="button_login">LOGIN</string>
+    <string name="drawer_report">Report</string>
+    <string name="drawer_logout">Logout</string>
+    <string name="drawer_guide">Guide</string>
+    <string name="drawer_introduction">Introduction</string>
+    <string name="drawer_setting">Setting</string>
+    <string name="notify_login_fail">Email or Password is wrong!</string>
+    <string name="item_activity">Hoạt động</string>
+    <string name="item_number">Số lượng</string>
+    <string name="notify_dismiss">DISMISS</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_background_drawer"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtAccountName"
+        app:layout_constraintBottom_toBottomOf="@+id/imgClose"
+        app:layout_constraintEnd_toStartOf="@+id/imgClose"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp"
+        android:textColor="@color/color_white" />
+
+    <ImageView
+        android:id="@+id/imgClose"
+        app:layout_constraintBottom_toBottomOf="@id/textLineHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="10dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/textLineHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="@android:color/darker_gray" />
+
+    <ImageView
+        android:id="@+id/imgReport"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLineHorizontal"
+        app:srcCompat="@drawable/ic_report"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="0dp"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/txtReport"
+        app:layout_constraintBottom_toBottomOf="@+id/imgReport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgReport"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingStart="45dp"
+        android:paddingEnd="0dp"
+        android:text="@string/drawer_report"
+        android:textAllCaps="true"
+        android:textColor="@color/color_white"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgGuide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgReport"
+        app:srcCompat="@drawable/ic_guide"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/txtGuide"
+        app:layout_constraintBottom_toBottomOf="@+id/imgGuide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgGuide"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingStart="45dp"
+        android:paddingEnd="0dp"
+        android:text="@string/drawer_guide"
+        android:textColor="@color/color_white"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgIntroduction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgGuide"
+        app:srcCompat="@drawable/ic_introduction"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/txtIntroduction"
+        app:layout_constraintBottom_toBottomOf="@+id/imgIntroduction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgIntroduction"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingStart="45dp"
+        android:paddingEnd="0dp"
+        android:text="@string/drawer_introduction"
+        android:textColor="@color/color_white"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgSetting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgIntroduction"
+        app:srcCompat="@drawable/ic_settings"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/txtSetting"
+        app:layout_constraintBottom_toBottomOf="@+id/imgSetting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgSetting"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingStart="45dp"
+        android:paddingEnd="0dp"
+        android:text="@string/drawer_setting"
+        android:textColor="@color/color_white"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:id="@+id/imgLogout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgSetting"
+        app:srcCompat="@drawable/ic_logout"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/txtLogout"
+        app:layout_constraintBottom_toBottomOf="@+id/imgLogout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgLogout"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:onClick="@{() -> mainViewModel.logout()}"
+        android:paddingStart="45dp"
+        android:paddingEnd="0dp"
+        android:text="@string/drawer_logout"
+        android:textColor="@color/color_white"
+        android:textStyle="bold" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
