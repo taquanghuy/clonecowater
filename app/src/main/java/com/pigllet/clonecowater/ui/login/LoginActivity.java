@@ -15,9 +15,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.pigllet.clonecowater.MainActivity;
 import com.pigllet.clonecowater.R;
-import com.pigllet.clonecowater.ShareStoreUtils;
+import com.pigllet.clonecowater.constant.ShareStoreUtils;
 import com.pigllet.clonecowater.UserService;
-import com.pigllet.clonecowater.ConstApp;
+import com.pigllet.clonecowater.constant.ConstApp;
 import com.pigllet.clonecowater.ultis.login.ResultLogin;
 
 import okhttp3.OkHttpClient;

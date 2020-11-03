@@ -3,27 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/clItemHome"
     android:layout_width="match_parent"
+    android:padding="10dp"
     android:layout_height="50dp"
-    android:background="@color/color_white"
-    android:padding="10dp">
+    android:background="@android:color/white">
 
     <TextView
         android:id="@+id/txtHome"
-        android:layout_width="wrap_content"
+        android:layout_width="400dp"
         android:layout_height="match_parent"
-        android:layout_marginEnd="30dp"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textAllCaps="true"
         android:textColor="@android:color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:adjustViewBounds="true"
+        android:padding="3dp"
         android:src="@drawable/ic_chevron_right"
+        app:layout_constraintBottom_toBottomOf="@id/txtHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/txtHome"
+        app:srcCompat="@drawable/ic_chevron_right" />
 </androidx.constraintlayout.widget.ConstraintLayout>

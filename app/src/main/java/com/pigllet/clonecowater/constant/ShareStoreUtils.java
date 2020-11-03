@@ -1,4 +1,4 @@
-package com.pigllet.clonecowater;
+package com.pigllet.clonecowater.constant;
 
 import android.content.Context;
 
@@ -25,6 +25,8 @@ public class ShareStoreUtils {
         }.getType());
         return resultLogin;
     }
+
+
 
 
 

@@ -1,5 +1,6 @@
 package com.pigllet.clonecowater;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,21 +30,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initViews();
         actionToolbar();
         HomeFragment homeFragment = new HomeFragment();
-
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.nav_fragment, homeFragment, "ReortFragment")
                     .commit();
         }
+
     }
 
     private void createFragment() {
-
-
     }
 
-    private void initViews(){
+    private void initViews() {
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.layoutToolbar);
         navigationView = findViewById(R.id.navView);
@@ -53,12 +52,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.imgMenu:
                 drawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.txtReport:
-                Intent itHome = new Intent(getApplicationContext(),MainActivity.class);
+                Intent itHome = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(itHome);
                 break;
             case R.id.txtGuide:
@@ -76,9 +75,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        drawerLayout = findViewById(R.id.drawerLayout);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
+        } else {
             super.onBackPressed();
         }
 

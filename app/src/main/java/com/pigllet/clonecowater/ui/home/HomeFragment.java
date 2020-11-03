@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,9 +17,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pigllet.clonecowater.R;
-import com.pigllet.clonecowater.ShareStoreUtils;
+import com.pigllet.clonecowater.constant.ShareStoreUtils;
 import com.pigllet.clonecowater.UserService;
-import com.pigllet.clonecowater.ConstApp;
+import com.pigllet.clonecowater.constant.ConstApp;
 import com.pigllet.clonecowater.ui.report.ReportFragment;
 import com.pigllet.clonecowater.ui.report.OnItemClickListenner;
 import com.pigllet.clonecowater.ultis.home.Datum;
@@ -27,6 +28,7 @@ import com.pigllet.clonecowater.ultis.login.ResultLogin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -45,7 +47,8 @@ public class HomeFragment extends Fragment implements OnItemClickListenner {
     private HomeFragment homeFragment;
     private Context mContext;
     private ResultLogin resultLogin;
-    ReportFragment reportFragment;
+    private ReportFragment reportFragment;
+    //private static final String ARG_CONTENT = "homeId";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,10 +77,19 @@ public class HomeFragment extends Fragment implements OnItemClickListenner {
         loadItemReport();
     }
 
+    public static HomeFragment newInstance() {
+        HomeFragment fragment = new HomeFragment();
+        Bundle bundle = new Bundle();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     private void iniViews() {
         homeAdapter = new HomeAdapter(datas, getContext(), this);
         recyclerView = view.findViewById(R.id.rvHome);
-        //recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
+        itemDecoration.setDrawable(getActivity().getDrawable(R.drawable.line_divider));
+        recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setAdapter(homeAdapter);
     }
 
@@ -114,6 +126,7 @@ public class HomeFragment extends Fragment implements OnItemClickListenner {
                         Toast.makeText(getContext(), "No Result", Toast.LENGTH_LONG).show();
                     }
                 }
+
                 @Override
                 public void onFailure(Call<Item> call, Throwable t) {
 
@@ -128,15 +141,18 @@ public class HomeFragment extends Fragment implements OnItemClickListenner {
     public void onItemClick(int position) {
         String token = ShareStoreUtils.getUser(getContext()).getToken();
         Log.d("TOKEN", token);
-        reportFragment = new ReportFragment();
+
+        reportFragment = ReportFragment.newInstance();
         FragmentManager fragmentManager;
         fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.nav_fragment, reportFragment).commit();
+
+        int homeId = datas.get(position).getId().intValue();
+        Bundle bundle = new Bundle();
+        bundle.putInt(ConstApp.KEY_REPORT, homeId);
+        reportFragment.setArguments(bundle);
+        fragmentManager.beginTransaction().replace(R.id.nav_fragment, reportFragment).addToBackStack(null).commit();
 
     }
 
-   /* @Override
-    public boolean onBackPressed() {
 
-    }*/
 }

@@ -9,4 +9,6 @@
     <color name="color_background_button">#424e7d</color>
     <color name="color_background_drawer">#2f3c6f</color>
     <color name="color_background_item_1">#eef1fc</color>
+    <color name="line_divider">#000000</color>
+    <color name="color_yellow">#e89b15</color>
 </resources>
