@@ -31,6 +31,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
     public void updateData(List<ReportResponse.Data.ReportActivity> activityList){
         this.activitiesResponseList.clear();
         this.activitiesResponseList.addAll(activityList);
+
         notifyDataSetChanged();
     }
 
@@ -53,6 +54,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
                 callBack.onItemClick(position);
             }
         });
+
     }
 
     @Override

@@ -1,0 +1,18 @@
+<resources>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">CoWater</string>
+    <string name="list_report_add_new">Thêm mới</string>
+    <string name="list_report_title_report">Báo cáo</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="button_login">LOGIN</string>
+    <string name="notify_login_fail">Login fail</string>
+    <string name="notify_dismiss">DISSMISS</string>
+    <string name="drawer_report">Report</string>
+    <string name="item_activity">Hoạt động</string>
+    <string name="item_number">Số lượng</string>
+    <string name="drawer_guide">Guide</string>
+    <string name="drawer_introduction">Introduction</string>
+    <string name="drawer_setting">Setting</string>
+    <string name="drawer_logout">Logout</string>
+</resources>

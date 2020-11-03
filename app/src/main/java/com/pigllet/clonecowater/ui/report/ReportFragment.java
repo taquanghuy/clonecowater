@@ -2,9 +2,11 @@ package com.pigllet.clonecowater.ui.report;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -20,7 +22,7 @@ import com.pigllet.clonecowater.R;
 import com.pigllet.clonecowater.UserService;
 import com.pigllet.clonecowater.constant.ConstApp;
 import com.pigllet.clonecowater.constant.ShareStoreUtils;
-import com.pigllet.clonecowater.ui.list_detail.ListDetailFragment;
+import com.pigllet.clonecowater.ui.list_report.ListReportFragment;
 import com.pigllet.clonecowater.ultis.home.Datum;
 import com.pigllet.clonecowater.ultis.login.ResultLogin;
 import com.pigllet.clonecowater.ultis.report.ReportResponse;
@@ -46,8 +48,7 @@ public class ReportFragment extends Fragment implements OnItemClickListenner {
     private List<ReportResponse.Data.ReportActivity> projectActivityList = new ArrayList<>();
     private Context context;
     private List<Datum> datumList = new ArrayList<>();
-    private ListDetailFragment listDetailFragment;
-    private List<Datum> datas = new ArrayList<>();
+    private ListReportFragment listReportFragment;
 
     public ReportFragment() {
     }
@@ -111,7 +112,9 @@ public class ReportFragment extends Fragment implements OnItemClickListenner {
         int reportId;
         if (getArguments() != null) {
             reportId = getArguments().getInt(ConstApp.KEY_REPORT);
+            Log.d("RP", String.valueOf(reportId));
             ResultLogin resultLogin = ShareStoreUtils.getUser(getContext());
+            Log.d("Result_1", String.valueOf(resultLogin));
             if (resultLogin != null) {
                 String token = resultLogin.getToken();
                 Call<ReportResponse> call = userService.getListActivities(reportId, 27, token, "vn", 1);
@@ -135,7 +138,7 @@ public class ReportFragment extends Fragment implements OnItemClickListenner {
                         int a = 1;
                     }
                 });
-            }
+            } else Log.d("Checkk", "Failll");
         }
 
 
@@ -166,15 +169,15 @@ public class ReportFragment extends Fragment implements OnItemClickListenner {
 
     @Override
     public void onItemClick(int position) {
-        listDetailFragment = ListDetailFragment.newInstance();
+        listReportFragment = ListReportFragment.newInstance();
         FragmentManager fragmentManager = getFragmentManager();
-        int homeId = datas.get(position).getId().intValue();
+        int homeId = projectActivityList.get(position).getProject_activity_id();
         Bundle bundle = new Bundle();
-        bundle.putInt(ConstApp.KEY_LIST_DETAIL, homeId);
-        int detailId = projectActivityList.get(position).getProject_activity().getId();
-        bundle.putInt(ConstApp.KEY_LIST_DETAIL_ID, detailId);
-        listDetailFragment.setArguments(bundle);
-        fragmentManager.beginTransaction().replace(R.id.nav_fragment, listDetailFragment).addToBackStack(null).commit();
+        bundle.putInt(ConstApp.KEY_LIST_REPORT, homeId);
+        /*int detailId = projectActivityList.get(position).getProject_activity().getId();
+        bundle.putInt(ConstApp.KEY_LIST_REORT_ID, detailId);*/
+        listReportFragment.setArguments(bundle);
+        fragmentManager.beginTransaction().replace(R.id.nav_fragment, listReportFragment).addToBackStack(null).commit();
     }
 
 }
