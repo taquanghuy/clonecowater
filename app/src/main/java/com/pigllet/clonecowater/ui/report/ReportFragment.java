@@ -121,6 +121,7 @@ public class ReportFragment extends Fragment implements OnItemClickListenner {
                 call.enqueue(new Callback<ReportResponse>() {
                     @Override
                     public void onResponse(@NotNull Call<ReportResponse> call, @NotNull Response<ReportResponse> response) {
+                        projectActivityList.clear();
                         if (response.isSuccessful() && response.body() != null) {
                             for (ReportResponse.Data.ReportActivity reportActivity : response.body().getData().getReport_activity()) {
                                 if (reportActivity.getProject_activity() != null) {
@@ -171,13 +172,22 @@ public class ReportFragment extends Fragment implements OnItemClickListenner {
     public void onItemClick(int position) {
         listReportFragment = ListReportFragment.newInstance();
         FragmentManager fragmentManager = getFragmentManager();
-        int homeId = projectActivityList.get(position).getProject_activity_id();
+
         Bundle bundle = new Bundle();
-        bundle.putInt(ConstApp.KEY_LIST_REPORT, homeId);
+        int reportId = projectActivityList.get(position).getProject_activity().getId();
+        bundle.putInt(ConstApp.KEY_LIST_REPORT, reportId);
+
+        int id = projectActivityList.get(position).getReport_id();
+        bundle.putInt(ConstApp.KEY_LIST_REORT_ID, id);
+
+        bundle.putParcelable(ConstApp.KEY_LIST_REORT_MODEL, projectActivityList.get(position));
+        //bundle.putParcelableArrayList(ConstApp.KEY_LIST_REPORT, projectActivityList);
         /*int detailId = projectActivityList.get(position).getProject_activity().getId();
+
         bundle.putInt(ConstApp.KEY_LIST_REORT_ID, detailId);*/
         listReportFragment.setArguments(bundle);
         fragmentManager.beginTransaction().replace(R.id.nav_fragment, listReportFragment).addToBackStack(null).commit();
+
     }
 
 }

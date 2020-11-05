@@ -46,7 +46,7 @@
     <TextView
         android:id="@+id/txtTitleReport"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:layout_marginTop="25dp"
         android:background="@color/color_background_item_1"
         android:gravity="center|start"
@@ -54,6 +54,7 @@
         android:paddingEnd="10dp"
         android:text="@string/list_report_title_report"
         android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAddReport" />
@@ -61,12 +62,12 @@
     <TextView
         android:id="@+id/txtNumber"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:background="@color/color_background_item_1"
         android:gravity="center"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:text="@{@string/list_report_number(viewModel.number)}"
+        android:text="0"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/txtTitleReport"

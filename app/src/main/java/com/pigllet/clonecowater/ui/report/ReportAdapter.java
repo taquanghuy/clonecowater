@@ -31,7 +31,6 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
     public void updateData(List<ReportResponse.Data.ReportActivity> activityList){
         this.activitiesResponseList.clear();
         this.activitiesResponseList.addAll(activityList);
-
         notifyDataSetChanged();
     }
 
@@ -47,7 +46,8 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ReportAdapter.ViewHolder holder, final int position) {
         ReportResponse.Data.ReportActivity listActivitiesResponse = activitiesResponseList.get(position);
         holder.txtItemReport.setText(listActivitiesResponse.getProject_activity().getName());
-        holder.txtNumberReport.setText("0");
+        int countNumber = activitiesResponseList.get(position).getReal_time().size();
+        holder.txtNumberReport.setText(String.valueOf(countNumber));
         holder.clListReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -53,11 +53,12 @@ public class ListReportFragment extends Fragment implements OnItemClickListenner
     private RecyclerView recyclerView;
     private ListReportAdapter listReportAdapter;
     private List<ReportResponse.Data.ReportActivity.RealTime> listRealtime;
+    private ReportResponse.Data.ReportActivity mReportActivity;
     private Context context;
     private UserService userService;
     private Button btnAddReport;
     private TextView txtNumber;
-    private int count=0;
+    private int count;
 
     public ListReportFragment() {
         // Required empty public constructor
@@ -112,25 +113,40 @@ public class ListReportFragment extends Fragment implements OnItemClickListenner
         userService = retrofit.create(UserService.class);
     }
 
-    private void loadData() {
+    /*private void receiveData(){
+        listRealtime.add(getArguments().getParcelable(ConstApp.KEY_LIST_REORT_MODEL));
+    }*/
 
+    private void loadData() {
         assert getArguments() != null;
         final int reportId = getArguments().getInt(ConstApp.KEY_LIST_REPORT);
-        Log.d("ABC", String.valueOf(reportId));
+        Log.d("REPORTID", String.valueOf(reportId));
+        int id = getArguments().getInt(ConstApp.KEY_LIST_REORT_ID);
+        Log.d("ID", String.valueOf(id));
+
         if (getArguments() != null) {
             ResultLogin resultLogin = ShareStoreUtils.getUser(requireActivity());
             Log.d("Result", String.valueOf(resultLogin));
             if (resultLogin != null) {
                 String token = resultLogin.getToken();
                 Log.d("Token", token);
-                Call<ReportResponse> call = userService.getListActivities(26, 27, token, "vn", 1);
+                Call<ReportResponse> call = userService.getListActivities(id, resultLogin.getProfile().getProject().getId(), token, "vn", 1);
                 call.enqueue(new Callback<ReportResponse>() {
                     @Override
                     public void onResponse(@NotNull Call<ReportResponse> call, @NotNull Response<ReportResponse> response) {
                         if (response.isSuccessful() && response.body().getData().getReport_activity() != null) {
-                            for (ReportResponse.Data.ReportActivity.RealTime mRealtime : response.body().getData().getReport_activity().get(10).getReal_time()) {
-                                listRealtime.add(mRealtime);
-                                count += 1;
+                            for (ReportResponse.Data.ReportActivity mReportActivity : response.body().getData().getReport_activity()) {
+                                if (reportId == mReportActivity.getProject_activity_id()) {
+                                    for (int i = 0; i < mReportActivity.getReal_time().size(); i++) {
+                                        listRealtime.add(mReportActivity.getReal_time().get(i));
+                                        count += 1;
+                                    }
+                                    Log.d("COUNT", String.valueOf(count));
+                                    txtNumber.setText(String.valueOf(count));
+
+                                    //mReportActivity.getReal_time().add(listRealtime);
+                                }
+                                //listRealtime.add(mRealtime);
                             }
                             /*count = listRealtime.size();*/
                             listReportAdapter.updateData(listRealtime);
@@ -144,13 +160,10 @@ public class ListReportFragment extends Fragment implements OnItemClickListenner
                         int a = 1;
                     }
                 });
-            } else Log.d("Check", "fail");
+            }
         }
-        Log.d("COUNT", String.valueOf(count));
-        txtNumber.setText(String.valueOf(count));
-        /*txtNumber.setText(String.valueOf(listRealtime.size()));
-        Log.d("SIZE", String.valueOf(listRealtime.size()));*/
     }
+
 
     private void iniViews() {
         listRealtime = new ArrayList<>();
